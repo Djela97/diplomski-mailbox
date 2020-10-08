@@ -5,18 +5,19 @@
   "author": "",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --inline --hot",
-    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
+    "dev": "cross-env NODE_ENV=development webpack-dev-server",
+    "build": "cross-env NODE_ENV=development webpack-dev-server"
   },
   "dependencies": {
+    "axios": "latest",
     "bootstrap": "^3.3.7",
     "font-awesome": "^4.7.0",
     "jquery": "^3.1.1",
     "moment": "^2.17.1",
+    "uglifyjs-webpack-plugin": "^2.2.0",
     "vue": "^2.1.0",
-    "vue-simple-alert": "^1.1.1",
-    "axios": "latest",
-    "vue-axios": "latest"
+    "vue-axios": "latest",
+    "vue-simple-alert": "^1.1.1"
   },
   "devDependencies": {
     "babel-core": "^6.0.0",
