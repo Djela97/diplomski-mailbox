@@ -2,7 +2,7 @@
     <aside class="lg-side">
         <div class="inbox-head">
             <h3>{{ currentView.title }}</h3>
-                <a href="http://localhost:4000/login">
+                <a href="https://diplomski-login.herokuapp.com">
                     <button type="button" style="float: right" class="btn btn-primary">Sign out</button></a>
         </div>
 

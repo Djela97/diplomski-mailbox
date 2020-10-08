@@ -88,7 +88,7 @@
                         eventBus.$emit('sentMessage', {
                             message: m
                         });
-                        window.location.href = 'http://localhost:4001/inbox';
+                        window.location.href = 'https://diplomski-mailbox.herokuapp.com/inbox';
                     })
                     .catch((error)=> {
                         console.log(error);
