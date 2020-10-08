@@ -59,7 +59,7 @@
                 }
                 mess = [];
                 this.payload = JSON.parse(window.name);
-                axios.get("http://localhost:8080/message/list?username="+this.payload.username,{headers})
+                axios.get("https://diplomski-quarkus.herokuapp.com/message/list?username="+this.payload.username,{headers})
                     .then( (result) => {
                         let mes = result.data;
                         console.log(mes);
@@ -71,7 +71,7 @@
                     });
 
                 folds = [];
-                axios.get("http://localhost:8080/folders/list?username="+this.payload.username,{headers})
+                axios.get("https://diplomski-quarkus.herokuapp.com/folders/list?username="+this.payload.username,{headers})
                     .then( (result) => {
                         let fs = result.data;
                         // console.log('fs: ' + JSON.stringify(fs));

@@ -115,7 +115,7 @@
                     'Accept': 'application/json',
                 };
 
-                axios.post('http://localhost:8080/folders/create?username='+user.username,
+                axios.post('https://diplomski-quarkus.herokuapp.com/folders/create?username='+user.username,
                     {folderName: this.input}, {headers})
                     .then(function (response) {
                         window.history.go();

@@ -89,7 +89,7 @@
                     'Accept': 'application/json',
                 };
 
-                axios.post('http://localhost:8080/message/'+mode, message, {headers})
+                axios.post('https://diplomski-quarkus.herokuapp.com/message/'+mode, message, {headers})
                     .then(function (response) {})
                     .catch((error)=> {
                         console.log(error);
@@ -101,7 +101,7 @@
                     'Accept': 'application/json',
                 };
                 let user = JSON.parse(window.name);
-                axios.post('http://localhost:8080/message/move?username='+user.username+'&foldername='+fname,
+                axios.post('https://diplomski-quarkus.herokuapp.com/message/move?username='+user.username+'&foldername='+fname,
                     this.data.message,
                     {headers})
                     .then(function (response) {

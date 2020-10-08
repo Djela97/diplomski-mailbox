@@ -82,7 +82,7 @@
                     senderName: user.username,
                     receiverMail: this.message.receiverMail
                 };
-                axios.post('http://localhost:8080/message/send', m, {headers})
+                axios.post('https://diplomski-quarkus.herokuapp.com/message/send', m, {headers})
                     .then(function (response) {
                         console.log(response);
                         eventBus.$emit('sentMessage', {

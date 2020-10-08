@@ -8,7 +8,7 @@ This repository contains the code for the second example application from the [V
 # Install the dependencies
 npm install
 
-# Serve with hot reload at http://localhost:8080
+# Serve with hot reload at https://diplomski-quarkus.herokuapp.com
 npm run dev
 
 # Build for production with minification

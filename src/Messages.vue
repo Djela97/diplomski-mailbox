@@ -51,7 +51,7 @@
                     'Accept': 'application/json',
                 };
 
-                axios.post('http://localhost:8080/message/read', message, {headers})
+                axios.post('https://diplomski-quarkus.herokuapp.com/message/read', message, {headers})
                     .then(function (response) {})
                     .catch((error)=> {
                         console.log(error);
