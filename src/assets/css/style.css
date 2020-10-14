@@ -76,12 +76,25 @@ a.mail-dropdown {
     padding: 20px;
 }
 
+.compose-wrapper-1 {
+    padding: 20px;
+    width: 200px;
+}
+
 .inbox-body {
     padding: 20px 0 20px 20px;
 }
 
 .btn-compose {
     background: none repeat scroll 0 0 #ff6c60;
+    color: #fff;
+    padding: 12px 0;
+    text-align: center;
+    width: 100%;
+}
+
+.btn-reply {
+    background: none repeat scroll 0 0 #47c616;
     color: #fff;
     padding: 12px 0;
     text-align: center;
@@ -401,4 +414,8 @@ ul.inbox-pagination li {
 
 .attachments {
     margin-top: 30px;
+}
+
+.reply-forward{
+    width: 60px;
 }

@@ -127,7 +127,21 @@
 
             },
             deleteFolder(){
+                let user = JSON.parse(window.name);
+                const headers = {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                };
 
+                axios.post('https://diplomski-quarkus.herokuapp.com/folders/delete?username='+user.username,
+                    {folderName: this.input}, {headers})
+                    .then(function (response) {
+                        window.history.go();
+                    })
+                    .catch((error)=> {
+                        console.log(error);
+                        this.$alert(error.response.data);
+                    });
             }
         },
 

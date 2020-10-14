@@ -21,6 +21,18 @@
                 </button>
             </template>
 
+            <template v-if="typeof data.message.isImportant !== 'undefined'">
+                <button class="btn btn-warning" @click="modifyMessage(data.message, 'unimportant')"
+                        :disabled="!data.message.isImportant">
+                    <i class="fa fa-star" aria-hidden="true"></i>&nbsp; Mark as unimportant
+                </button>
+
+                <button class="btn btn-warning" @click="modifyMessage(data.message, 'important')"
+                        :disabled="data.message.isImportant">
+                    <i class="fa fa-star-o" aria-hidden="true"></i>&nbsp; Mark as important
+                </button>
+            </template>
+
             <div class="btn-group dropright">
                 <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">
@@ -42,6 +54,23 @@
 
         <div v-html="data.message.content" class="message"></div>
 
+        <div class="mail-option">
+            <div class="compose-wrapper-1">
+                <app-reply :message="replyMessage"></app-reply>
+            </div>
+            <div class="compose-wrapper-1">
+                <app-forward :message="data.message"></app-forward>
+            </div>
+<!--            <div class="compose-wrapper-1">-->
+<!--                <app-reply></app-reply>-->
+<!--            </div>-->
+<!--            <button class="btn btn-success" @click="modifyMessage(data.message, 'unimportant')">-->
+<!--                <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>&nbsp; Reply-->
+<!--            </button>-->
+<!--            <button class="btn btn-info" @click="modifyMessage(data.message, 'unimportant')">-->
+<!--                <i class="fa fa-arrow-right" aria-hidden="true"></i>&nbsp; Forward-->
+<!--            </button>-->
+        </div>
     </div>
 </template>
 
@@ -50,6 +79,8 @@
     import Vue from 'vue';
     import axios from 'axios';
     import VueAxios from 'vue-axios';
+    import Reply from "./Reply.vue";
+    import Forward from "./Forward.vue";
     Vue.use(axios, VueAxios);
 
     export default {
@@ -59,10 +90,21 @@
                 required: true
             },
         },
+        data() {
+            return {
+                replyMessage: {}
+            };
+        },
         activated() {
             if (typeof this.data.message.isRead !== 'undefined') {
                 this.data.message.isRead = true;
             }
+            this.replyMessage = JSON.parse(JSON.stringify(this.data.message));
+            this.replyMessage.subject = 'Re: ' + this.replyMessage.subject;
+            this.replyMessage.content = '\n' +
+                '\n' +
+                'Original message:\n' +
+                this.replyMessage.content;
         },
         methods: {
             navigateBack() {
@@ -82,6 +124,10 @@
                     message.isRead = true;
                 } else if (mode === 'unread'){
                     message.isRead = false;
+                } else if (mode === 'important'){
+                    message.isImportant = true;
+                } else if (mode === 'unimportant'){
+                    message.isImportant = false;
                 }
 
                 const headers = {
@@ -126,6 +172,10 @@
 
                 return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
             }
-        }
+        },
+        components: {
+            appReply: Reply,
+            appForward: Forward
+        },
     }
 </script>
